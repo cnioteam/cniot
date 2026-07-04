@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNIOT - Chinese National IIOT</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --c-yellow: #ffcd38;
+            --c-orange: #f59e3f;
+            --c-red: #ef5350;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f9f9f9;
+            --bg-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--c-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--c-red);
+            text-decoration: underline;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: var(--c-orange);
+            text-decoration: none;
+        }
+
+        /* --- Hero / Logo Section --- */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            background-color: var(--bg-white);
+        }
+
+        .logo-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .block {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+        }
+
+        .bg-yellow { background-color: var(--c-yellow); }
+        .bg-orange { background-color: var(--c-orange); }
+        .bg-red { background-color: var(--c-red); }
+
+        /* Staggered animation for logo */
+        .block:nth-child(1) { animation-delay: 0.1s; }
+        .block:nth-child(2) { animation-delay: 0.2s; }
+        .block:nth-child(3) { animation-delay: 0.3s; }
+        .block:nth-child(4) { animation-delay: 0.4s; }
+        .block:nth-child(5) { animation-delay: 0.5s; }
+
+        /* --- General Section Styling --- */
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0; /* Hidden for scroll animation */
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--c-yellow), var(--c-orange), var(--c-red));
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .bilingual-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--c-yellow);
+            border-radius: 0 4px 4px 0;
+            transition: transform 0.2s;
+        }
+
+        .bilingual-block:hover {
+            transform: translateX(5px);
+            border-left-color: var(--c-orange);
+        }
+
+        .cn-text {
+            color: var(--text-light);
+            font-size: 0.95em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* --- Specific Section Styling --- */
+        
+        /* Why Teams List */
+        .why-list {
+            list-style: none;
+        }
+        
+        .why-list li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .why-list li::before {
+            content: '•';
+            color: var(--c-red);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            line-height: 1;
+            top: -2px;
+        }
+
+        /* Eligibility List */
+        .eligibility-list {
+            list-style: none;
+        }
+
+        .sub-list {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            background: white;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .sub-list div {
+            margin-bottom: 8px;
+        }
+
+        /* Structure & Gallery */
+        .centered-content {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .gallery-year {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ddd;
+            text-align: center;
+            margin-top: 20px;
+            letter-spacing: 5px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #333;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        /* --- Animations Keyframes --- */
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .block { width: 45px; height: 45px; font-size: 24px; }
+            h2 { font-size: 1.4rem; }
+            nav ul { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html#about">About</a></li>
+            <li><a href="file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html#why">Why Teams?</a></li>
+            <li><a href="file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html#eligibility">Eligibility</a></li>
+            <li><a href="file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html#schedule">Schedule</a></li>
+            <li><a href="file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html#gallery">Gallery</a></li>
+        </ul>
+    </nav>
+
+    <!-- Logo Header -->
+    <div class="hero">
+        <div class="logo-container">
+            <div class="block bg-yellow">C</div>
+            <div class="block bg-yellow">N</div>
+            <div class="block bg-yellow">I</div>
+            <div class="block bg-orange">O</div>
+            <div class="block bg-red">T</div>
+        </div>
+    </div>
+
+    <!-- Section 1: About -->
+    <section id="about" class="visible">
+        <h2>关于CNIOT和IIOT (About CNIOT and IIOT)</h2>
+        
+        <div class="bilingual-block">
+            The IIOT is a young project which aims to be just like the <a href="file:///C:/JackQ/G11%E4%B8%8A/%E5%AD%A6%E6%9C%AF%E9%93%BE%E6%8E%A5/cniot.html#">International Olympiad in Informatics</a>, but the problems are meant to be solved in a team.
+            <span class="cn-text">IIOT 是一个新兴且很有意思的项目，其目标是与国际信息学奥林匹克竞赛 (IOI) 类似，但其题目需要团队来解决。</span>
+        </div>
+
+        <div class="bilingual-block">
+            The participants are teams of 4 high school students who represent a school (like in ICPC).
+            <span class="cn-text">参赛者是每组 4 名高中学生组成的团队，他们会代表一所学校（类似于ICPC和CCPC）。</span>
+            <div style="margin-top: 5px; font-size: 0.9em;">(According to the IIOT official website: <a href="https://iio.team/" target="_blank">https://iio.team/</a>)</div>
+            <div style="font-size: 0.9em;"><span class="cn-text">（来自 IIOT 官方网站: <a href="https://iio.team/" target="_blank">https://iio.team/</a>）</span></div>
+        </div>
+
+        <div class="bilingual-block">
+            CNIOT is a route for Chinese students to enter the IIOT official contest.
+            <span class="cn-text">CNIOT 是中国学生参加 IIOT 正式比赛的通道。</span>
+        </div>
+    </section>
+
+    <!-- Section 2: Why Teams -->
+    <section id="why" class="visible">
+        <h2>为啥要团队 (Why in teams?)</h2>
+        
+        <ul class="why-list">
+            <li>
+                Teamwork is a requirement in the labor market.
+                <span class="cn-text">团队合作在职业中很重要</span>
+            </li>
+            <li>
+                Encourages mutual support and learning.
+                <span class="cn-text">互相支持和学习（还有可能有大佬帮助）</span>
+            </li>
+            <li>
+                Promotes creativity which comes from the comparison of different ideas.
+                <span class="cn-text">各种各样的想法促进创造力和脑洞</span>
+            </li>
+            <li>
+                Students will be more willing to participate in similar competitions (NOIP-NOI-IOI, ICPC).
+                <span class="cn-text">更愿意参加其他的信息学比赛，包括高中与大学阶段。</span>
+            </li>
+        </ul>
+        
+        <div style="margin-top: 20px; font-size: 0.9em; text-align: center;">
+            From the IIOT official website: <a href="https://iio.team/" target="_blank">https://iio.team/</a><br>
+            <span class="cn-text">来自IIOT官方网站，还请多多支持: <a href="https://iio.team/" target="_blank">https://iio.team/</a></span>
+        </div>
+    </section>
+
+    <!-- Section 3: Eligibility -->
+    <section id="eligibility" class="visible">
+        <h2>参与资格 (Eligibility)</h2>
+
+        <ul class="eligibility-list">
+            <li>
+                <div class="bilingual-block">
+                    <strong>An official participant should be a middle/high school student (grade 6 - grade 12).</strong>
+                    <span class="cn-text">选手必须是初中或高中学生（等同6至12年级，各地区表述方式不同）</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="bilingual-block">
+                    <strong>An official participant should be either one of the following:</strong>
+                    <span class="cn-text">选手必须满足如下条件：</span>
+                </div>
+                
+                <div class="sub-list">
+                    <div>1) A permanent resident of Mainland China/Hong Kong/Macao/Taiwan.</div>
+                    <div>2) A citizen of Mainland China/Hong Kong/Macao/Taiwan.</div>
+                    <div>3) Studying in a middle/high school in Mainland China/Hong Kong/Macao/Taiwan.</div>
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                    <div class="cn-text">1) 中国大陆/香港/澳门/台湾地区的永久居民。</div>
+                    <div class="cn-text">2) 中国大陆/香港/澳门/台湾地区的公民。</div>
+                    <div class="cn-text">3) 在中国大陆/香港/澳门/台湾地区的一所中学/高中就读。</div>
+                </div>
+            </li>
+
+            <li>
+                <div class="bilingual-block">
+                    <strong>Participants can only join one team.</strong>
+                    <span class="cn-text">选手只能一次加入一支队伍（你总不能分身吧）</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="bilingual-block">
+                    <strong>Teams that are composed of participants from at most 3 different schools/institution are allowed (the schools/institutions can be different in their geological position).</strong>
+                    <span class="cn-text">由来自最多 3 所不同学校/机构的参与者组成的团队是被允许参加的（这些学校/机构在地理位置上可以有所不同）。</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="bilingual-block">
+                    <strong>A team should have at most 2 NOI Gold or IOI Gold/Silver medalist.</strong>
+                    <span class="cn-text">一个团队最多只能有两名获得过 NOI 金牌或 IOI 金牌/银牌的选手。</span>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Section 4: Structure and Schedule -->
+    <section id="schedule" class="visible">
+        <h2>结构和安排 (Structure and Schedule)</h2>
+        <div class="centered-content">
+            <p>• Not yet determined</p>
+            <p>• 待定</p>
+        </div>
+    </section>
+
+    <!-- Section 5: Gallery -->
+    <section id="gallery" class="visible">
+        <h2>美好的回忆 (Gallery)</h2>
+        <div class="gallery-year">
+            • 2026
+        </div>
+    </section>
+
+    <footer>
+        <p>© CNIOT</p>
+    </footer>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        // Use Intersection Observer to fade sections in when scrolling
+        const observerOptions = {
+            root: null, // use the viewport
+            threshold: 0.15 // trigger when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // only animate once
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+
+</body></html>
